@@ -23,3 +23,13 @@ function sum5(x, y) {
     return x;
 }
 console.log(sum5(3, 40));
+//Rest Parameters
+function invite(firstİnvite) {
+    var anothers = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        anothers[_i - 1] = arguments[_i];
+    }
+    // return firstİnvite + " " + anothers.join(" ");
+    return anothers.join(" ");
+}
+console.log(invite("Ehlullah", "Derin", "Salih", "Ahmet"));

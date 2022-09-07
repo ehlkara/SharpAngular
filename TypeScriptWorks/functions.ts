@@ -30,3 +30,11 @@ function sum5(x:number,y?:number):number{
 }
 
 console.log(sum5(3,40));
+
+//Rest Parameters
+function invite(firstİnvite:string,...anothers:string[]):string{
+    return firstİnvite + " " + anothers.join(" ");
+    // return anothers.join(" ");
+}
+
+console.log(invite("Ehlullah","Derin","Salih","Ahmet"))
