@@ -20,3 +20,14 @@ let num3 = values3<number>(3)
 let city3 = values3<string>("İstanbul")
 
 console.log(num3 + ' ' + city3)
+
+class GenericClass<T> {
+    value:T;
+    Funtion(parametre:T):T{
+        return parametre;
+    }
+}
+
+let Class = new GenericClass<string>()
+
+Class.Funtion("İstanbul")
