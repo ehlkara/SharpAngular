@@ -20,7 +20,16 @@ home.eating();
 console.log(home._floor);
 
 class Person{
-    public name:string
+    public _name:string
+
+    get name():string{
+        return "Mr: " + this._name;
+    }
+
+    set name(firstName:string) {
+        this._name = firstName
+    }
+
     save(){
         console.log("Person saved");
     }
@@ -28,7 +37,7 @@ class Person{
 
 class Customers extends Person {
     sold(){
-        this.name;
+        this._name;
         console.log("Sold");
     }
 }
@@ -39,7 +48,9 @@ class Personal extends Person {
     }
 }
 
-let customer = new Customers()
+let customer = new Customers();
+customer.name = "Ehlullah"
+console.log(customer.name);
 customer.save();
 customer.sold();
 

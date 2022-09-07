@@ -30,6 +30,16 @@ console.log(home._floor);
 var Person = /** @class */ (function () {
     function Person() {
     }
+    Object.defineProperty(Person.prototype, "name", {
+        get: function () {
+            return "Mr: " + this._name;
+        },
+        set: function (firstName) {
+            this._name = firstName;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Person.prototype.save = function () {
         console.log("Person saved");
     };
@@ -41,6 +51,7 @@ var Customers = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Customers.prototype.sold = function () {
+        this._name;
         console.log("Sold");
     };
     return Customers;
@@ -56,6 +67,8 @@ var Personal = /** @class */ (function (_super) {
     return Personal;
 }(Person));
 var customer = new Customers();
+customer.name = "Ehlullah";
+console.log(customer.name);
 customer.save();
 customer.sold();
 var personal = new Personal();
