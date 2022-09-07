@@ -1,5 +1,5 @@
 class Home{
-    _roomNumbers:number;
+    private _roomNumbers:number;
     _windownumbers:number;
     _floor:number;
 
@@ -18,3 +18,32 @@ class Home{
 let home = new Home(3,4,5)
 home.eating();
 console.log(home._floor);
+
+class Person{
+    public name:string
+    save(){
+        console.log("Person saved");
+    }
+}
+
+class Customers extends Person {
+    sold(){
+        this.name;
+        console.log("Sold");
+    }
+}
+
+class Personal extends Person {
+    pay(){
+        console.log("Payed");
+    }
+}
+
+let customer = new Customers()
+customer.save();
+customer.sold();
+
+let personal = new Personal();
+personal.save();
+personal.pay();
+
