@@ -6,6 +6,7 @@ import { AlertifyService } from '../services/alertify.service';
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
+  // providers:[AlertifyService]
 })
 export class ProductComponent implements OnInit {
 
