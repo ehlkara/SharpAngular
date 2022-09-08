@@ -1,5 +1,10 @@
-<h3 *ngIf="products">{{title}}</h3>
+<h3 *ngIf="products; else noProduct">{{title}}</h3>
 <div class="row">
+    <ng-template #noProduct>
+        <div class="alert alert-primary" role="alert">
+            There are no products in this category.
+        </div>
+    </ng-template>
     <div class="card" style="width: 18rem;">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
