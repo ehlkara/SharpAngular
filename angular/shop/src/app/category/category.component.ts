@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from './category';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-category',
@@ -8,18 +9,17 @@ import { Category } from './category';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   title = "Category List"
-  categories : Category[] = [
-    {id:1, name:"Electronic"},
-    {id:2, name:"Computers"},
-    {id:3, name:"Phones"},
-    {id:4, name:"Music"},
-    {id:5, name:"Drinks"}
-  ]
+  path = "http://localhost:3000/categories"
+
+  categories! : Category[];
 
   ngOnInit(): void {
+    this.http.get<Category[]>(this.path).subscribe(data => {
+      this.categories = data
+    })
   }
 
 }
