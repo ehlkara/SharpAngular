@@ -1,5 +1,5 @@
 <!-- <h3 *ngIf="products; else noProduct">{{title}}</h3> -->
-
+<app-category></app-category>
 <div class="mb-3">
     <input class="form-control" id="productName" placeholder="Search Product..." [(ngModel)]="filterText">
     <div *ngIf="filterText" class="form-text">You are looking for <strong>{{filterText}}</strong> right now.</div>
