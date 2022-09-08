@@ -1,0 +1,9 @@
+ng new [projectName]
+
+ng serve --open
+
+ng g component [ComponentName]
+
+ng g service [ServiceName]
+
+json-server --watch shop.json
