@@ -12,6 +12,10 @@ export class ProductComponent implements OnInit {
   title = "Product List"
   products : any[] = [
     {id:1, name: "NoteBook", price:25000, categoryId:1, description:"HP Pavilion Gaming"},
+    {id:2, name: "Mouse", price:25, categoryId:2, description:"Microsoft mouse"},
+    {id:1, name: "NoteBook", price:25000, categoryId:1, description:"HP Pavilion Gaming"},
+    {id:2, name: "Mouse", price:25, categoryId:2, description:"Microsoft mouse"},
+    {id:1, name: "NoteBook", price:25000, categoryId:1, description:"HP Pavilion Gaming"},
     {id:2, name: "Mouse", price:25, categoryId:2, description:"Microsoft mouse"}
   ] 
 
