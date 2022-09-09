@@ -1,12 +1,13 @@
 <main class="form-signin w-100 m-auto">
-    <form>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
         <h1 class="h3 mb-3 fw-normal">Login To System</h1>
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <input type="text" #userName="ngModel" [(ngModel)]="model.userName" class="form-control" id="userName"
+                name="userName" placeholder="User Name">
+            <label for="floatingInput">User Name</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" #password="ngModel" [(ngModel)]="model.password" class="form-control" id="Password" name="password" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
