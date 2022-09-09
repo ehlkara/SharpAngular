@@ -1,0 +1,41 @@
+<h3>Add New Product - Reactive Form</h3>
+
+<form [formGroup]="productAddForm" (ngSubmit)="add()">
+    <div class="form-group">
+        <input type="text" id="name" name="name" formControlName="name" class="form-control" placeholder="Product Name">
+        <div class="alert alert-danger"
+            *ngIf="productAddForm.get('name')?.hasError('required') && productAddForm.get('name')?.dirty">Product name
+            is required</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" id="description" name="description" formControlName="description" class="form-control" placeholder="Description">
+        <div class="alert alert-danger"
+            *ngIf="productAddForm.get('description')?.hasError('required') && productAddForm.get('description')?.dirty">Description
+            is required</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" id="imageUrl" name="imageUrl" formControlName="imageUrl" class="form-control" placeholder="ImageUrl">
+        <div class="alert alert-danger"
+            *ngIf="productAddForm.get('imageUrl')?.hasError('required') && productAddForm.get('imageUrl')?.dirty">ImageUrl
+            is required</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" id="price" name="price" formControlName="price" class="form-control" placeholder="Price">
+        <div class="alert alert-danger"
+            *ngIf="productAddForm.get('price')?.hasError('required') && productAddForm.get('price')?.dirty">Price
+            is required</div>
+    </div>
+    <br>
+    <div class="form-group">
+        <select class="form-control" formControlName="categoryId" id="categoryId"
+            name="categoryId" required>
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <div *ngIf="productAddForm.get('categoryId')?.hasError('required') && productAddForm.get('categoryId')?.touched" class="alert alert-danger">Category is required.</div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" [disabled]="productAddForm.invalid">Add Product</button>
+</form>
