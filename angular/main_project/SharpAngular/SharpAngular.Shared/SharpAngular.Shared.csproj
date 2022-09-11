@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UnitOfWorks\**" />
+    <EmbeddedResource Remove="UnitOfWorks\**" />
+    <None Remove="UnitOfWorks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SharpDTOs\" />
     <None Remove="Responses\" />
     <None Remove="UnitOfWorks\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SharpDTOs\" />
     <Folder Include="Responses\" />
-    <Folder Include="UnitOfWorks\" />
   </ItemGroup>
 </Project>

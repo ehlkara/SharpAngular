@@ -18,7 +18,6 @@
     <None Remove="Context\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="Context\" />
   </ItemGroup>
   <ItemGroup>

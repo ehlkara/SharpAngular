@@ -7,6 +7,7 @@ namespace SharpAngular.Models.Entities.SharpAngular.IdentityAuth
     {
         public string Name { get; set; }
         public string Surname { get; set; }
+        public List<City> Cities { get; set; } = new List<City>();
     }
 }
 
