@@ -1,12 +1,14 @@
 using System;
+using Microsoft.EntityFrameworkCore;
+using SharpAngular.Core.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-//builder.Services.AddDbContext<AppDbContext>(options =>
-//{
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon"));
-//});
+builder.Services.AddDbContext<SharpAngularDbContext>(x =>
+{
+    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlCon"));
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,6 +27,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseAuthentication();
 
 app.MapControllers();
 

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SharpDTOs\" />
+    <None Remove="Responses\" />
+    <None Remove="UnitOfWorks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SharpDTOs\" />
+    <Folder Include="Responses\" />
+    <Folder Include="UnitOfWorks\" />
+  </ItemGroup>
+</Project>
