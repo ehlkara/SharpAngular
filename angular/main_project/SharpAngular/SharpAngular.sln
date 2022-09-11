@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpAngular.API", "SharpAngular.API\SharpAngular.API.csproj", "{A7C350C0-C02D-4950-82EA-EF03C0089CEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpAngular.API", "SharpAngular.API\SharpAngular.API.csproj", "{A7C350C0-C02D-4950-82EA-EF03C0089CEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpAngular.Core", "SharpAngular.Core\SharpAngular.Core.csproj", "{8FEC531B-C457-4675-B2C4-A2CF4488407B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpAngular.Models", "SharpAngular.Models\SharpAngular.Models.csproj", "{1EE18EBF-AB27-4B30-BCC7-157FB89E4F99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A7C350C0-C02D-4950-82EA-EF03C0089CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7C350C0-C02D-4950-82EA-EF03C0089CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7C350C0-C02D-4950-82EA-EF03C0089CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FEC531B-C457-4675-B2C4-A2CF4488407B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEC531B-C457-4675-B2C4-A2CF4488407B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEC531B-C457-4675-B2C4-A2CF4488407B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEC531B-C457-4675-B2C4-A2CF4488407B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE18EBF-AB27-4B30-BCC7-157FB89E4F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE18EBF-AB27-4B30-BCC7-157FB89E4F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE18EBF-AB27-4B30-BCC7-157FB89E4F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE18EBF-AB27-4B30-BCC7-157FB89E4F99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

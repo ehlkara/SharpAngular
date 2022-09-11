@@ -33,10 +33,17 @@
       "id": 4
     },
     {
+<<<<<<< Updated upstream
       "name": "MacBook Pro M2",
       "description": "M2 machine",
       "imageUrl": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80",
       "price": "22000",
+=======
+      "name": "Macbook Air",
+      "description": "M2 version",
+      "imageUrl": "https://images.unsplash.com/photo-1662667465165-eeb7953cef9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+      "price": "18000",
+>>>>>>> Stashed changes
       "categoryId": "1",
       "id": 5
     }
