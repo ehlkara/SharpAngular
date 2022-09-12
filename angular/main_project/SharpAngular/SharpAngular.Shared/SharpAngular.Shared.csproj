@@ -20,4 +20,7 @@
   <ItemGroup>
     <Folder Include="Responses\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpAngular.Models\SharpAngular.Models.csproj" />
+  </ItemGroup>
 </Project>

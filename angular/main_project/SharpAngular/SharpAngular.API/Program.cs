@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SharpAngular.API.Modules;
+using SharpAngular.BussinessLogic.Mapping;
 using SharpAngular.Core.Context;
+using SharpAngular.Core.Helpers;
 using SharpAngular.Models.Entities.SharpAngular.IdentityAuth;
 using System.Text;
 
@@ -18,7 +20,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddAutoMapper(typeof(MapProfile));
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 builder.Services.AddDbContext<SharpAngularDbContext>(x =>
 {
@@ -27,6 +29,8 @@ builder.Services.AddDbContext<SharpAngularDbContext>(x =>
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
+
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 
 // For Idendtity
 builder.Services.AddIdentity<SharpUser, SharpRole>().AddEntityFrameworkStores<SharpAngularDbContext>().AddDefaultTokenProviders();

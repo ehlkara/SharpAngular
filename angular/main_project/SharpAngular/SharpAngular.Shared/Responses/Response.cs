@@ -5,22 +5,43 @@ namespace SharpAngular.Shared.Responses
 {
     public class Response<T>
     {
-        public T? Result { get; set; }
+        public T? Data { get; set; }
 
         [JsonIgnore]
         public int StatusCode { get; set; }
 
+
+        public List<string>? Errors { get; set; }
+
         public ResponseError Error { get; set; }
 
-        public bool HasError { get { return Error != null; } }
-
-        public static async Task<Response<T>> Run(T data, int statusCode)
+        public static Response<T> Success(int statusCode, T data)
         {
-            return await Task.FromResult(new Response<T> { Result = data, StatusCode = statusCode });
+            return new Response<T> { StatusCode = statusCode, Data = data };
         }
-        public static async Task<Response<T>> Catch(ResponseError error, int? errorCode = null)
+
+        public static Response<T> Success(int statusCode)
         {
-            return await Task.FromResult(new Response<T> { Error = error, StatusCode = (errorCode.HasValue) ? errorCode.Value : error.StatusCode });
+            return new Response<T> { StatusCode = statusCode };
+        }
+
+        public static async Task<Response<T>> SuccessAsync(int statusCode, T data)
+        {
+            return await Task.FromResult(new Response<T> { StatusCode = statusCode, Data = data });
+        }
+
+        public static Response<T> Fail(int statusCode, List<string> errors)
+        {
+            return new Response<T> { StatusCode = statusCode, Errors = errors };
+        }
+        public static Response<T> Fail(ResponseError error, int? statusCode = null)
+        {
+            return new Response<T> { StatusCode = (statusCode.HasValue) ? statusCode.Value : error.StatusCode, Error = error };
+        }
+
+        public static async Task<Response<T>> FailAsync(ResponseError error, int? statusCode = null)
+        {
+            return await Task.FromResult(new Response<T> { StatusCode = (statusCode.HasValue) ? statusCode.Value : error.StatusCode, Error = error });
         }
     }
 }
