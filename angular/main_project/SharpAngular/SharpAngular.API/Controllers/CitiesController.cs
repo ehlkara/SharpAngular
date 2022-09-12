@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SharpAngular.BussinessLogic.Abstract;
 using SharpAngular.Models.Entities.SharpAngular;
 using SharpAngular.Shared.Responses;
@@ -77,6 +76,36 @@ namespace SharpAngular.API.Controllers
             {
                 _logger.LogError(ex, ex.Message);
                 return Response<List<PhotoDto>>.Fail(new ResponseError { Message = ex.Message, StatusCode = StatusCodes.Status404NotFound });
+            }
+        }
+
+        [HttpPost("add_photo_city")]
+        public async Task<Response<Photo>> AddPhotoForCity(int cityId,[FromBody] PhotoCreationDto photoCreationDto)
+        {
+            try
+            {
+                var responseDto = await _cityBLL.AddPhotoForCity(cityId, photoCreationDto);
+                return await Response<Photo>.SuccessAsync(StatusCodes.Status200OK, responseDto);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return await Response<Photo>.FailAsync(new ResponseError { Message = ex.Message, StatusCode = StatusCodes.Status400BadRequest });
+            }
+        }
+
+        [HttpGet("get_photo/{id}")]
+        public Response<Photo> GetPhoto(int id)
+        {
+            try
+            {
+                var responseDto = _cityBLL.GetPhoto(id);
+                return Response<Photo>.Success(StatusCodes.Status200OK, responseDto);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return Response<Photo>.Fail(new ResponseError { Message = ex.Message, StatusCode = StatusCodes.Status404NotFound });
             }
         }
     }
