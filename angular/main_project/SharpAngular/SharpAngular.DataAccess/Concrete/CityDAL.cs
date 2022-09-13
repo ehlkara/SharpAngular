@@ -24,5 +24,12 @@ namespace SharpAngular.DataAccess.Concrete
             await _context.SaveChangesAsync();
             return city;
         }
+
+        public async Task<Photo> AddPhotoForCity(Photo photo)
+        {
+            await _context.Photos.AddAsync(photo);
+            await _context.SaveChangesAsync();
+            return photo;
+        }
     }
 }

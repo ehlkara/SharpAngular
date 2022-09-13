@@ -13,8 +13,6 @@ namespace SharpAngular.BussinessLogic.Abstract
 
         List<PhotoDto> GetPhotosByCity(int id);
 
-        Task<Photo> AddPhotoForCity(int cityId,PhotoCreationDto photoCreationDto);
-
         Photo GetPhoto(int id);
     }
 }

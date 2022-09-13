@@ -1,8 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
+using Microsoft.AspNetCore.Mvc;
 using SharpAngular.BussinessLogic.Abstract;
 using SharpAngular.Models.Entities.SharpAngular;
 using SharpAngular.Shared.Responses;
 using SharpAngular.Shared.SharpDTOs;
+using AutoMapper;
+using SharpAngular.BussinessLogic.Abstract.IUserBLL;
+using SharpAngular.DataAccess.Abstract;
+using Microsoft.Extensions.Options;
+using SharpAngular.Core.Helpers;
 
 namespace SharpAngular.API.Controllers
 {
@@ -11,12 +18,31 @@ namespace SharpAngular.API.Controllers
     public class CitiesController : ControllerBase
     {
         private readonly ICityBLL _cityBLL;
+        private readonly IUserBLL _userBLL;
+        private readonly IMapper _mapper;
+        private readonly IAppRepository _appRepository;
         private readonly ILogger<CitiesController> _logger;
 
-        public CitiesController(ICityBLL cityBLL, ILogger<CitiesController> logger)
+        private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
+
+        private readonly Cloudinary _cloudinary;
+
+        public CitiesController(ICityBLL cityBLL, ILogger<CitiesController> logger, IAppRepository apprepository, IMapper mapper, IUserBLL userBLL, Cloudinary cloudinary, IOptions<CloudinarySettings> cloudinaryConfig)
         {
             _cityBLL = cityBLL;
             _logger = logger;
+            _appRepository = apprepository;
+            _mapper = mapper;
+            _userBLL = userBLL;
+            _cloudinary = cloudinary;
+
+            _cloudinaryConfig = cloudinaryConfig;
+
+            Account account = new Account(_cloudinaryConfig.Value.CloudName,
+                _cloudinaryConfig.Value.ApiKey, _cloudinaryConfig.Value.ApiSecret);
+
+            _cloudinary = new Cloudinary(account);
+            _cloudinaryConfig = cloudinaryConfig;
         }
 
         [HttpGet("get_cities")]
@@ -80,18 +106,57 @@ namespace SharpAngular.API.Controllers
         }
 
         [HttpPost("add_photo_city")]
-        public async Task<Response<Photo>> AddPhotoForCity(int cityId,[FromBody] PhotoCreationDto photoCreationDto)
+        public IActionResult AddPhotoForCity(int cityId,[FromBody] PhotoCreationDto photoCreationDto)
         {
-            try
+            var city = _appRepository.GetCityById(cityId);
+
+            if (city == null)
             {
-                var responseDto = await _cityBLL.AddPhotoForCity(cityId, photoCreationDto);
-                return await Response<Photo>.SuccessAsync(StatusCodes.Status200OK, responseDto);
+                throw new NotImplementedException();
             }
-            catch (Exception ex)
+
+            int currentUserId = int.Parse(_userBLL.GetUserById(city.UserId).ToString());
+
+            if (currentUserId != city.UserId)
             {
-                _logger.LogError(ex, ex.Message);
-                return await Response<Photo>.FailAsync(new ResponseError { Message = ex.Message, StatusCode = StatusCodes.Status400BadRequest });
+                throw new NotImplementedException();
             }
+
+            var file = photoCreationDto.File;
+
+            var uploadResult = new ImageUploadResult();
+
+            if (file.Length > 0)
+            {
+                using (var stream = file.OpenReadStream())
+                {
+                    var uploadParams = new ImageUploadParams
+                    {
+                        File = new FileDescription(file.Name, stream)
+                    };
+
+                    uploadResult = _cloudinary.Upload(uploadParams);
+                }
+            }
+
+            photoCreationDto.Url = uploadResult.Uri.ToString();
+            photoCreationDto.PublicId = uploadResult.PublicId;
+
+            var photo = _mapper.Map<Photo>(photoCreationDto);
+            photo.City = city;
+
+            if (!city.Photos.Any(p => p.IsMain))
+            {
+                photo.IsMain = true;
+            }
+            city.Photos.Add(photo);
+            if (_appRepository.SaveAll())
+            {
+                var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
+                return CreatedAtRoute("GetPhoto", new { id = photo.Id }, photoToReturn);
+            }
+
+            return BadRequest("Could not add the photo");
         }
 
         [HttpGet("get_photo/{id}")]
