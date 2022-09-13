@@ -90,7 +90,7 @@ namespace SharpAngular.API.Controllers
             }
         }
 
-        [HttpGet("get_photo/{id}")]
+        [HttpGet("get_photo_city/{id}")]
         public Response<List<PhotoDto>> GetPhotosByCity(int id)
         {
             try
@@ -105,8 +105,8 @@ namespace SharpAngular.API.Controllers
             }
         }
 
-        [HttpPost("add_photo_city")]
-        public IActionResult AddPhotoForCity(int cityId,[FromBody] PhotoCreationDto photoCreationDto)
+        [HttpPost(template: "add_photo_city")]
+        public IActionResult AddPhotoForCity(int cityId, [FromBody] PhotoCreationDto photoCreationDto)
         {
             var city = _appRepository.GetCityById(cityId);
 
