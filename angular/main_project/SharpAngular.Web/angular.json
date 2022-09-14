@@ -23,9 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/font-awesome/css/font-awesome.min.css",
+              "./node_modules/bootswatch/dist/minty/bootstrap.min.css",
+              "./node_modules/alertifyjs/build/css/alertifyjs.min.css",
+              "./node_modules/alertifyjs/build/css/themes/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/alertifyjs/build/alertify.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -97,5 +103,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3f9db396-ef0c-4cdd-91a4-0528f3ac3a61"
   }
 }
