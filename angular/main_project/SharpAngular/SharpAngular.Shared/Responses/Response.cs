@@ -20,19 +20,9 @@ namespace SharpAngular.Shared.Responses
             return new Response<T> { StatusCode = statusCode, Data = data };
         }
 
-        public static Response<T> Success(int statusCode)
-        {
-            return new Response<T> { StatusCode = statusCode };
-        }
-
         public static async Task<Response<T>> SuccessAsync(int statusCode, T data)
         {
             return await Task.FromResult(new Response<T> { StatusCode = statusCode, Data = data });
-        }
-
-        public static Response<T> Fail(int statusCode, List<string> errors)
-        {
-            return new Response<T> { StatusCode = statusCode, Errors = errors };
         }
         public static Response<T> Fail(ResponseError error, int? statusCode = null)
         {

@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { CityComponent } from './city/city.component';
+import { ValueArrayPipe } from './city/value-array.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    CityComponent
+    CityComponent,
+    ValueArrayPipe
   ],
   imports: [
     BrowserModule,
