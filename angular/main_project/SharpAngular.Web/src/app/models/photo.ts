@@ -1,8 +1,8 @@
 export class Photo {
-    id!:number;
-    cityId!:number;
-    dateAdded!:Date;
-    description!:string;
-    isMain!:boolean;
-    url!:string;
+    url!: string;
+    description!: string;
+    isMain!: boolean;
+    publicId!: string;
+    cityId!: number;
+    id!: number;
 }

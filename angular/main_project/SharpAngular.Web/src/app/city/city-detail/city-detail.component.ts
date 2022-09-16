@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { City } from 'src/app/models/city';
 import { CityService } from 'src/app/services/city.service';
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 import { Photo } from 'src/app/models/photo';
 
 @Component({
@@ -12,12 +12,12 @@ import { Photo } from 'src/app/models/photo';
   providers: [CityService]
 })
 export class CityDetailComponent implements OnInit {
-  galleryOptions!: NgxGalleryOptions[];
-  galleryImages!: NgxGalleryImage[];
   constructor(private activatedRoute: ActivatedRoute, private cityService: CityService) { }
 
   city!: City;
   photos: Photo[] = [];
+  galleryOptions!: NgxGalleryOptions[];
+  galleryImages!: NgxGalleryImage[];
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -37,16 +37,16 @@ export class CityDetailComponent implements OnInit {
     })
   }
 
-  getImages(){
-    const images = [];
-    for(let i = 0; i<this.city.photoUrl.length;i++){
-      images.push({
-        small:this.city.photoUrl[i].url,
-        medium:this.city.photoUrl[i].url,
+  getImages() {
+    const imageUrls = [];
+    for(let i = 0; i<this.city.photoUrl?.length; i++) {
+      imageUrls.push({
+        small: this.city.photoUrl[i].url,
+        medium: this.city.photoUrl[i].url,
         big: this.city.photoUrl[i].url
       });
     }
-    return images;
+    return imageUrls;
   }
 
   setGallery() {
