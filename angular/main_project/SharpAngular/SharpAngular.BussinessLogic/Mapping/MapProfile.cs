@@ -9,7 +9,7 @@ namespace SharpAngular.BussinessLogic.Mapping
         public MapProfile()
         {
             CreateMap<City, CityForListDto>()
-                .ForMember(dest => dest.PhotoUrl, opt => { opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url); })
+                .ForMember(dest => dest.Photos, opt => { opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url); })
                 .ForMember(dest => dest.Name, src => src.MapFrom(src => src.Name))
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                 .ReverseMap();
@@ -21,7 +21,7 @@ namespace SharpAngular.BussinessLogic.Mapping
                 .ReverseMap();
 
             CreateMap<City, CityForDetailDto>().ReverseMap();
-            CreateMap<Photo, PhotoDto>().ReverseMap();
+            CreateMap<Photo, PhotoDto>();
             CreateMap<Photo, PhotoCreationDto>().ReverseMap();
             CreateMap<Photo, PhotoForReturnDto>().ReverseMap();
         }

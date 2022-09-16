@@ -23,6 +23,9 @@ export class CityDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.getCityById(params["cityId"]);
     });
+    this.activatedRoute.params.subscribe(params => {
+      this.getPhotosByCity(params["cityId"]);
+    });
   }
   getCityById(cityId: number) {
     this.cityService.getCityById(cityId).subscribe(data => {
@@ -39,11 +42,11 @@ export class CityDetailComponent implements OnInit {
 
   getImages() {
     const imageUrls = [];
-    for(let i = 0; i<this.city.photoUrl?.length; i++) {
+    for(let i = 0; i<this.city.photos?.length; i++) {
       imageUrls.push({
-        small: this.city.photoUrl[i].url,
-        medium: this.city.photoUrl[i].url,
-        big: this.city.photoUrl[i].url
+        small: this.city.photos[i].url,
+        medium: this.city.photos[i].url,
+        big: this.city.photos[i].url
       });
     }
     return imageUrls;
