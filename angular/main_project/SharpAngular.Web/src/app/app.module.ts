@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { CityComponent } from './city/city.component';
 import { ValueArrayPipe } from './city/value-array.pipe';
+import { CityDetailComponent } from './city/city-detail/city-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     CityComponent,
-    ValueArrayPipe
+    ValueArrayPipe,
+    CityDetailComponent
   ],
   imports: [
     BrowserModule,
