@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,9 @@ import { CityAddComponent } from './city/city-add/city-add.component';
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
