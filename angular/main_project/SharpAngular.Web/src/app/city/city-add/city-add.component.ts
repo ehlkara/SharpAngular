@@ -11,7 +11,10 @@ import { City } from 'src/app/models/city';
 })
 export class CityAddComponent implements OnInit {
 
-  constructor(private cityService: CityService, private formBuilder: FormBuilder) { }
+  constructor(
+    private cityService: CityService,
+    private formBuilder: FormBuilder,
+  ) { }
 
   city!: City;
   cityAddForm!: FormGroup;
