@@ -12,6 +12,7 @@ import { NavComponent } from './nav/nav.component';
 import { CityComponent } from './city/city.component';
 import { ValueArrayPipe } from './city/value-array.pipe';
 import { CityDetailComponent } from './city/city-detail/city-detail.component';
+import { CityAddComponent } from './city/city-add/city-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CityDetailComponent } from './city/city-detail/city-detail.component';
     NavComponent,
     CityComponent,
     ValueArrayPipe,
-    CityDetailComponent
+    CityDetailComponent,
+    CityAddComponent
   ],
   imports: [
     BrowserModule,

@@ -42,7 +42,7 @@ export class CityDetailComponent implements OnInit {
 
   getImages() {
     const imageUrls = [];
-    for(let i = 0; i<this.city.photos?.length; i++) {
+    for(let i = 0; i<this.city.photos.length; i++) {
       imageUrls.push({
         small: this.city.photos[i].url,
         medium: this.city.photos[i].url,
