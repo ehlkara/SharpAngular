@@ -60,7 +60,6 @@ export class PhotoComponent implements OnInit {
       }
     }
   }
-
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
