@@ -16,6 +16,7 @@ import { CityDetailComponent } from './city/city-detail/city-detail.component';
 import { CityAddComponent } from './city/city-add/city-add.component';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthService } from './services/auth.service';
     CityComponent,
     ValueArrayPipe,
     CityDetailComponent,
-    CityAddComponent
+    CityAddComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

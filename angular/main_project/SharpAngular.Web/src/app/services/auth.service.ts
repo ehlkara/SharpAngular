@@ -35,7 +35,7 @@ export class AuthService {
 
   register(registerUser: RegisterUser) {
     this.httpClient.post(this.path + "register", registerUser).subscribe(data => {
-
+      
     })
   }
 
