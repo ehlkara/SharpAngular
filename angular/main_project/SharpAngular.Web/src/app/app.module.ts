@@ -7,6 +7,7 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
+import { FileUploadModule } from '@ottimis/ng2-file-upload'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { CityAddComponent } from './city/city-add/city-add.component';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
 import { RegisterComponent } from './register/register.component';
+import { PhotoComponent } from './photo/photo.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { RegisterComponent } from './register/register.component';
     ValueArrayPipe,
     CityDetailComponent,
     CityAddComponent,
-    RegisterComponent
+    RegisterComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -36,10 +39,11 @@ import { RegisterComponent } from './register/register.component';
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
     BrowserAnimationsModule,
-    FormsModule,ReactiveFormsModule,
-    NgxEditorModule
+    FormsModule, ReactiveFormsModule,
+    NgxEditorModule,
+    FileUploadModule
   ],
-  providers: [AlertifyService,AuthService],
+  providers: [AlertifyService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

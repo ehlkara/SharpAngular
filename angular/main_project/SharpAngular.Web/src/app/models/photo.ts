@@ -2,7 +2,7 @@ export class Photo {
     url!: string;
     description!: string;
     isMain!: boolean;
-    publicId!: string;
+    dateAdded!: Date;
     cityId!: number;
     id!: number;
 }

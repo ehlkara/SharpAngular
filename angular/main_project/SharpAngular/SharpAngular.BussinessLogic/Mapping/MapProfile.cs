@@ -22,8 +22,8 @@ namespace SharpAngular.BussinessLogic.Mapping
 
             CreateMap<City, CityForDetailDto>().ReverseMap();
             CreateMap<Photo, PhotoDto>();
-            CreateMap<Photo, PhotoCreationDto>().ReverseMap();
-            CreateMap<Photo, PhotoForReturnDto>().ReverseMap();
+            CreateMap<PhotoCreationDto, Photo>().ReverseMap();
+            CreateMap<PhotoForReturnDto, Photo>().ReverseMap();
         }
     }
 }

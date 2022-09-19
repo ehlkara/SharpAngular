@@ -20,6 +20,7 @@
     "@angular/router": "^14.2.2",
     "@auth0/angular-jwt": "^5.0.2",
     "@kolkov/ngx-gallery": "^2.0.1",
+    "@ottimis/ng2-file-upload": "^3.0.4",
     "alertifyjs": "^1.13.1",
     "angular-jwt": "^0.1.11",
     "bootstrap": "^5.2.1",

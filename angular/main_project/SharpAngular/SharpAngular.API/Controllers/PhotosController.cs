@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
+using AutoMapper;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +36,8 @@ namespace SharpAngular.API.Controllers
             _cloudinaryConfig = cloudinaryConfig;
         }
 
-        [HttpPost(template: "add_photo_city")]
-        public IActionResult AddPhotoForCity(int cityId, [FromBody] PhotoCreationDto photoCreationDto)
+        [HttpPost]
+        public IActionResult AddPhotoForCity(int cityId, [FromForm] PhotoCreationDto photoCreationDto)
         {
             var city = _appRepository.GetCityById(cityId);
 
@@ -45,7 +46,7 @@ namespace SharpAngular.API.Controllers
                 return BadRequest("Could not find the city");
             }
 
-            int currentUserId = int.Parse(_userBLL.GetUserById(city.UserId).ToString());
+            int currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
             if (currentUserId != city.UserId)
             {
