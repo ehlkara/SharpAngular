@@ -42,14 +42,14 @@ namespace SharpAngular.API.Controllers
 
             if (city == null)
             {
-                throw new NotImplementedException();
+                return BadRequest("Could not find the city");
             }
 
             int currentUserId = int.Parse(_userBLL.GetUserById(city.UserId).ToString());
 
             if (currentUserId != city.UserId)
             {
-                throw new NotImplementedException();
+                return Unauthorized();
             }
 
             var file = photoCreationDto.File;
