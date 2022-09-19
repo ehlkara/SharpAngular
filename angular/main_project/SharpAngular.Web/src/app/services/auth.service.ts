@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginUser } from '../models/loginUser';
-import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AlertifyService } from './alertify.service';
 import { RegisterUser } from '../models/registerUser';
 
@@ -20,25 +20,21 @@ export class AuthService {
   path = "https://localhost:7073/api/Users/";
   userToken: any;
   decodedToken: any;
-  jwtHelper: JwtHelper = new JwtHelper();
+  jwtHelper = new JwtHelperService();
   TOKEN_KEY = "accessToken";
 
   login(loginUser: LoginUser) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    this.httpClient.post(this.path + "login", loginUser, { headers: headers }).subscribe(data => {
+    this.httpClient.post(this.path + "login", loginUser).subscribe(data => {
       this.saveToken(data['accessToken']);
       this.userToken = data['accessToken'];
       this.decodedToken = this.jwtHelper.decodeToken(data['accessToken']);
-      this.alertifyService.success("Login to system")
+      this.alertifyService.success("Login to system");
       this.router.navigateByUrl('/city');
     });
   }
 
   register(registerUser: RegisterUser) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Content-Type", "application/json");
-    this.httpClient.post(this.path + "register", registerUser, { headers: headers }).subscribe(data => {
+    this.httpClient.post(this.path + "register", registerUser).subscribe(data => {
 
     })
   }
@@ -49,10 +45,17 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem(this.TOKEN_KEY);
+    this.alertifyService.error("Logout to system");
   }
 
-  loggedIn() {
-    return tokenNotExpired(this.TOKEN_KEY);
+  loggedIn():boolean {
+    // return tokenNotExpired(this.TOKEN_KEY);
+    if(!this.TOKEN_KEY){
+      return this.jwtHelper.isTokenExpired(this.TOKEN_KEY);
+    }
+    else {
+      return !this.jwtHelper.isTokenExpired(this.TOKEN_KEY);
+    }
   }
 
   get token() {

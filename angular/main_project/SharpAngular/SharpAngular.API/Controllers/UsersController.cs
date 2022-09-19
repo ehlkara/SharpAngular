@@ -20,48 +20,27 @@ namespace SharpAngular.API.Controllers
         }
 
         [HttpPost(template: "register")]
-        public async Task<Response<bool>> Register([FromBody] RegisterDto request)
+        public async Task<bool> Register([FromBody] RegisterDto request)
         {
-            try
-            {
-                var responseDto = await _userBLL.Register(request);
-                return await Response<bool>.SuccessAsync(StatusCodes.Status201Created, responseDto);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return await Response<bool>.FailAsync(new ResponseError { Message = ex.Message, StatusCode = StatusCodes.Status400BadRequest });
-            }
+            var responseDto = await _userBLL.Register(request);
+            return await Task.FromResult(responseDto);
+            
         }
 
         [HttpPost(template: "login")]
-        public async Task<Response<LoginResponseDto>> Login([FromBody] LoginDto request)
+        public async Task<LoginResponseDto> Login([FromBody] LoginDto request)
         {
-            try
-            {
-                var responseDto = await _userBLL.Login(request);
-                return await Response<LoginResponseDto>.SuccessAsync(StatusCodes.Status200OK, responseDto);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return await Response<LoginResponseDto>.FailAsync(new ResponseError { Message = ex.Message, StatusCode = StatusCodes.Status400BadRequest });
-            }
+
+            var responseDto = await _userBLL.Login(request);
+            return await Task.FromResult(responseDto);
+            
         }
 
         [HttpPost(template: "get_user_by_id")]
-        public async Task<Response<UserDto>> GetUserById([FromBody] int id)
+        public async Task<UserDto> GetUserById([FromBody] int id)
         {
-            try
-            {
-                var responseDto = await _userBLL.GetUserById(id);
-                return await Response<UserDto>.SuccessAsync(StatusCodes.Status200OK, responseDto);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, ex.Message);
-                return await Response<UserDto>.FailAsync(new ResponseError { Message = ex.Message, StatusCode = StatusCodes.Status404NotFound });
-            }
+            var responseDto = await _userBLL.GetUserById(id);
+            return await Task.FromResult(responseDto);
         }
     }
 }
