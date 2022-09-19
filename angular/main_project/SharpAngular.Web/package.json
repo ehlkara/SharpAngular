@@ -21,6 +21,7 @@
     "@auth0/angular-jwt": "^5.0.2",
     "@kolkov/ngx-gallery": "^2.0.1",
     "alertifyjs": "^1.13.1",
+    "angular-jwt": "^0.1.11",
     "bootstrap": "^5.2.1",
     "bootswatch": "^5.2.1",
     "font-awesome": "^4.7.0",

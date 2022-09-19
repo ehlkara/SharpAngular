@@ -28,12 +28,12 @@
             </div>
           </li>
         </ul>
-        <form *ngIf="!isAuthenticated" #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
+        <form *ngIf="!isAuthenticated()" #loginForm="ngForm" (ngSubmit)="login()" class="d-flex">
           <input class="form-control me-sm-2" name="userName" [(ngModel)]="loginUser.userName" type="text" required placeholder="User name">
           <input class="form-control me-sm-2" name="password" [(ngModel)]="loginUser.password" type="password" required placeholder="Password">
           <button class="btn btn-secondary my-2 my-sm-0" [disabled]="!loginForm.valid" type="submit">Login</button>
         </form>
-        <button class="btn btn-secondary my-2 my-sm-0" *ngIf="isAuthenticated" (click)="logOut()" type="submit">LogOut</button>
+        <button class="btn btn-secondary my-2 my-sm-0" *ngIf="isAuthenticated()" (click)="logOut()" routerLink="city" type="submit">LogOut</button>
       </div>
     </div>
   </nav>

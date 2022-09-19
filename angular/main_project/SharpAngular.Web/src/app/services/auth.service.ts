@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginUser } from '../models/loginUser';
 import { Router } from '@angular/router';
@@ -48,14 +48,9 @@ export class AuthService {
     this.alertifyService.error("Logout to system");
   }
 
-  loggedIn():boolean {
-    // return tokenNotExpired(this.TOKEN_KEY);
-    if(!this.TOKEN_KEY){
-      return this.jwtHelper.isTokenExpired(this.TOKEN_KEY);
-    }
-    else {
-      return !this.jwtHelper.isTokenExpired(this.TOKEN_KEY);
-    }
+  loggedIn() {
+    const token: string = localStorage.getItem(this.TOKEN_KEY);
+    return token != null && !this.jwtHelper.isTokenExpired(token);
   }
 
   get token() {
@@ -65,5 +60,5 @@ export class AuthService {
   getCurrentUserId() {
     return this.jwtHelper.decodeToken(this.token).id;
   }
-
 }
+
