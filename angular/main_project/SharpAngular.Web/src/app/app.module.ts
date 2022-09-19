@@ -6,6 +6,7 @@ import { appRoutes } from './routes';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxEditorModule } from 'ngx-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +36,8 @@ import { RegisterComponent } from './register/register.component';
     RouterModule.forRoot(appRoutes),
     NgxGalleryModule,
     BrowserAnimationsModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,
+    NgxEditorModule
   ],
   providers: [AlertifyService,AuthService],
   bootstrap: [AppComponent]

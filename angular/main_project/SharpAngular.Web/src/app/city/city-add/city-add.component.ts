@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CityService } from 'src/app/services/city.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { City } from 'src/app/models/city';
+import { Editor } from 'ngx-editor';
 
 @Component({
   selector: 'app-city-add',
@@ -15,7 +16,8 @@ export class CityAddComponent implements OnInit {
     private cityService: CityService,
     private formBuilder: FormBuilder,
   ) { }
-
+  editor: Editor | undefined;
+  html = '';
   city!: City;
   cityAddForm!: FormGroup;
 
@@ -30,6 +32,7 @@ export class CityAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createCityForm();
+    this.editor = new Editor();
   }
 
   add() {
@@ -39,5 +42,8 @@ export class CityAddComponent implements OnInit {
       this.city.userId = 1;
       this.cityService.add(this.city);
     }
+  }
+  ngOnDestroy(): void {
+    this.editor?.destroy();
   }
 }
